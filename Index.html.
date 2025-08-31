@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Golden Verses of Pythagoras</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <style>
+    body {
+      font-family: Georgia, serif;
+      margin: 0;
+      padding: 0;
+      background: #fefcf4;
+      color: #222;
+    }
+    header {
+      background: #b8860b;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+    main {
+      padding: 1.2em;
+      line-height: 1.6;
+    }
+    h1 {
+      font-size: 1.6em;
+      margin-bottom: 0.5em;
+    }
+    .verse {
+      background: #fff8dc;
+      border-left: 4px solid #b8860b;
+      margin: 1em 0;
+      padding: 0.8em;
+      border-radius: 6px;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9em;
+      color: #555;
+      margin: 2em 0 1em;
+    }
+    button {
+      display: block;
+      margin: 1.5em auto;
+      padding: 0.6em 1.2em;
+      font-size: 1em;
+      background: #b8860b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Golden Verses of Pythagoras</h1>
+    <p>Daily Practice & Wisdom</p>
+  </header>
+  <main>
+    <p>
+      Every evening, before you sleep, recall your actions of the day:
+      <strong>review them three times</strong> — from morning until night.
+      Ask yourself:
+    </p>
+    <ul>
+      <li>Where did I act with virtue?</li>
+      <li>Where did I fail to live in harmony?</li>
+      <li>What can I improve tomorrow?</li>
+    </ul>
+
+    <div class="verse">
+      “Never suffer sleep to close thy eyelids, after thy going to bed, till thou hast examined by thy reason all thy actions of the day.”
+    </div>
+
+    <button onclick="notifyMe()">Remind me at night</button>
+  </main>
+  <footer>
+    © 2025 Golden Verses App
+  </footer>
+
+  <script>
+    // Simple notification for practice
+    function notifyMe() {
+      if (!("Notification" in window)) {
+        alert("This browser does not support notifications.");
+      } else if (Notification.permission === "granted") {
+        new Notification("Time for reflection", {
+          body: "Review your day three times before sleep.",
+        });
+      } else if (Notification.permission !== "denied") {
+        Notification.requestPermission().then(permission => {
+          if (permission === "granted") {
+            new Notification("Time for reflection", {
+              body: "Review your day three times before sleep.",
+            });
+          }
+        });
+      }
+    }
+  </script>
+</body>
+</html>
